@@ -5,7 +5,7 @@ on:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
-      - 'odbcsv*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   deploy_crates_io:
@@ -25,7 +25,7 @@ jobs:
       env:
         CARGO_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
       run: |
-        cd odbcsv && cargo publish --token "${CARGO_TOKEN}"
+        cargo publish --token "${CARGO_TOKEN}"
 
   release_win64:
     name: Build and release Windows 64Bit
