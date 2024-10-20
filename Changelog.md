@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.6
+## 1.0.6-7
 
 * Test release from new repostitory
 * Update repostitory meta information
