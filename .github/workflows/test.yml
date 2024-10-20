@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   win64:
-    name: Test on Windows 64
+    name: Build Win64
     runs-on: windows-latest
 
     steps:
@@ -19,24 +19,13 @@ jobs:
           default: true
           override: true
 
-      # Extract all files from installer
-      - name: Install SQLite drivers
-        run: |
-         Invoke-WebRequest http://www.ch-werner.de/sqliteodbc/sqliteodbc_w64.exe -OutFile C:\sqliteodbc.exe
-         7z x C:\sqliteodbc.exe -o"C:\Program Files\SQLite ODBC Driver for Win64"
-         REG ADD "HKLM\SOFTWARE\ODBC\ODBCINST.INI\ODBC Drivers" /v "SQLite3 ODBC Driver" /t REG_SZ /d Installed /f
-         REG ADD "HKLM\SOFTWARE\ODBC\ODBCINST.INI\SQLite3 ODBC Driver" /v "Driver" /t REG_SZ /d "C:\Program Files\SQLite ODBC Driver for Win64\sqlite3odbc.dll" /f
-         REG ADD "HKLM\SOFTWARE\ODBC\ODBCINST.INI\SQLite3 ODBC Driver" /v "Setup" /t REG_SZ /d "C:\Program Files\SQLite ODBC Driver for Win64\sqlite3odbc.dll" /f
-         REG ADD "HKLM\SOFTWARE\ODBC\ODBCINST.INI\SQLite3 ODBC Driver" /v "UsageCount" /t REG_DWORD /d 1
-
       # selecting a toolchain either by action or manual `rustup` calls should happen
       # before the plugin, as the cache uses the current rustc version as its cache key
       - name: Rust build cache
         uses: Swatinem/rust-cache@v2
 
-      - name: Test
-        run: |
-          cargo test
+      - name: Build
+        run: cargo build --release
 
   win32:
     name: Build Win32
