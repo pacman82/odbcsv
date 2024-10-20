@@ -50,6 +50,6 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --defau
 # Setup workspace
 WORKDIR /workspace
 COPY . .
-RUN cp odbcsv/tests/list-drivers-linux.txt odbcsv/tests/list-drivers.txt
+RUN cp ./tests/list-drivers-ci.txt ./tests/list-drivers.txt
 
 CMD ~/.cargo/bin/cargo test
