@@ -49,9 +49,8 @@ jobs:
           Compress-Archive -LiteralPath target/release/odbcsv.exe -DestinationPath odbcsv-win64.zip
 
       - name: Github Upload
-        uses: svenstaro/upload-release-action@2.9.0
+        uses: svenstaro/upload-release-action@2
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: odbcsv-win64.zip
           asset_name: odbcsv-win64.zip
           tag: ${{ github.ref }}
@@ -78,9 +77,8 @@ jobs:
           Compress-Archive -LiteralPath target/release/odbcsv.exe -DestinationPath odbcsv-win32.zip
 
       - name: Github Upload
-        uses: svenstaro/upload-release-action@2.9.0
+        uses: svenstaro/upload-release-action@2
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: odbcsv-win32.zip
           asset_name: odbcsv-win32.zip
           tag: ${{ github.ref }}
@@ -109,9 +107,8 @@ jobs:
         run: cargo build --release
 
       - name: Github Upload
-        uses: svenstaro/upload-release-action@2.9.0
+        uses: svenstaro/upload-release-action@2
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: target/release/odbcsv
           asset_name: odbcsv-osx
           tag: ${{ github.ref }}
