@@ -12,7 +12,7 @@
 /.vscode/
 
 # Machine specific test expectation for list-drivers test
-/odbcsv/tests/list-drivers.txt
+/tests/list-drivers.txt
 
 # Artefact created during test run
 /odbc-api/sqlite-test.db
