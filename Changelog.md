@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.6
+
+* Test release from new repostitory
+* Update repostitory meta information
+
 ## 1.0.5
 
 * Fixes an issue causing `list-drivers` subcommand to only list one attribute. Now all attributes are listed.

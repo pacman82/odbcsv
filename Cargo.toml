@@ -1,10 +1,10 @@
 [package]
 name = "odbcsv"
-version = "1.0.5"
+version = "1.0.6"
 authors = ["Markus Klein"]
 edition = "2021"
 license = "MIT"
-repository = "https://github.com/pacman82/odbc-api/tree/master/odbcsv"
+repository = "https://github.com/pacman82/odbcsv/tree/main"
 documentation = "https://docs.rs/odbcsv/"
 
 # A short blurb about the package. This is not rendered in any format when
