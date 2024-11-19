@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.11](https://github.com/pacman82/odbcsv/compare/v1.0.10...v1.0.11) - 2024-11-19
+
+### Fixed
+
+- Binary releases should now be available again on GitHub
+
 ## [1.0.10](https://github.com/pacman82/odbcsv/compare/v1.0.9...v1.0.10) - 2024-11-19
 
 ### Other
