@@ -1,31 +1,13 @@
-# This workflows will build and release odbcsv
-name: Deploy odbcsv
+name: Release Binares
+
+permissions:
+  contents: write
 
 on:
-  push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  release:
+    types: [published]
 
 jobs:
-  deploy_crates_io:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Install latest rust toolchain
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        default: true
-        override: true
-    - name: Publish odbcsv to cargo
-      env:
-        CARGO_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
-      run: |
-        cargo publish --token "${CARGO_TOKEN}"
 
   release_win64:
     name: Build and release Windows 64Bit
@@ -35,13 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install latests rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          target: x86_64-pc-windows-msvc
-          default: true
-          override: true
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Build
         run: |
@@ -63,13 +40,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install latests rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          target: i686-pc-windows-msvc
-          default: true
-          override: true
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Build
         run: |
@@ -91,12 +63,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Insall latests rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          default: true
-          override: true
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Install unixODBC
         run: |
