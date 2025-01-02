@@ -69,7 +69,6 @@ jobs:
       - name: Install unixODBC
         run: |
           brew install unixodbc
-          sudo ln -s /opt/homebrew/lib ~/lib
 
       - name: Build
         run: cargo build --release
