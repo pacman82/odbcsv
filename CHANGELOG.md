@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.0.13](https://github.com/pacman82/odbcsv/compare/v1.0.12...v1.0.13) - 2025-02-17
+
+### Other
+
+- Update to odbc-api 11
+- *(deps)* bump tempfile from 3.16.0 to 3.17.0
+- *(deps)* bump clap from 4.5.28 to 4.5.29
+- *(deps)* bump clap from 4.5.27 to 4.5.28
+- *(deps)* bump tempfile from 3.15.0 to 3.16.0
+- *(deps)* bump log from 0.4.22 to 0.4.25
+- *(deps)* bump clap from 4.5.26 to 4.5.27
+- *(deps)* bump clap from 4.5.24 to 4.5.26
+- *(deps)* bump clap from 4.5.23 to 4.5.24
+- *(deps)* bump odbc-api from 10.1.0 to 10.1.1
+- *(deps)* bump tempfile from 3.14.0 to 3.15.0
+- Remove superfluos workaround for arm macs
+- *(deps)* bump anyhow from 1.0.94 to 1.0.95
+- *(deps)* bump clap from 4.5.22 to 4.5.23
+- *(deps)* bump anyhow from 1.0.93 to 1.0.94
+- *(deps)* bump clap from 4.5.21 to 4.5.22
+- *(deps)* bump odbc-api from 9.0.0 to 10.0.0
+
 ## [1.0.12](https://github.com/pacman82/odbcsv/compare/v1.0.11...v1.0.12) - 2024-11-19
 
 ### Fixed
