@@ -384,7 +384,7 @@ fn query(environment: &Environment, opt: &QueryOpt) -> Result<(), Error> {
         .collect();
 
     // Execute the query as a one off, and pass the parameters.
-    match connection.execute(query, params.as_slice())? {
+    match connection.execute(query, params.as_slice(), None)? {
         Some(cursor) => {
             // Write column names.
             cursor_to_csv(
