@@ -1,5 +1,5 @@
 use anyhow::Error;
-use assert_cmd::{assert::Assert, Command};
+use assert_cmd::{Command, assert::Assert};
 use odbc_api::{Connection, ConnectionOptions, Environment};
 use std::{
     fs::{self, File},
@@ -8,8 +8,7 @@ use std::{
 };
 use tempfile::NamedTempFile;
 
-const MSSQL: &str =
-    "Driver={ODBC Driver 18 for SQL Server};Server=localhost;UID=SA;PWD=My@Test@Password1;\
+const MSSQL: &str = "Driver={ODBC Driver 18 for SQL Server};Server=localhost;UID=SA;PWD=My@Test@Password1;\
     TrustServerCertificate=yes;";
 
 #[cfg(target_os = "windows")]
