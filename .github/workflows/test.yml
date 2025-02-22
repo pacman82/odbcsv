@@ -76,19 +76,48 @@ jobs:
   linux:
     name: Build & Test Linux
     runs-on: ubuntu-latest
+    # Database services used for testing
+    services:
+      # Microsoft SQL Server
+      sqlserver:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        ports:
+          - 1433:1433
+        env:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: My@Test@Password1
+
+      mariadb:
+        image: mariadb
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: my-secret-pw
+          MYSQL_DATABASE: test_db
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build test container
-        run: docker compose --file docker-compose-ci.yml build test_linux
+      - name: Install latest rust toolchain
+        uses: dtolnay/rust-toolchain@v1
+        with:
+          toolchain: stable
+      - name: Install ODBC Drivers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unixodbc-dev odbc-mariadb msodbcsql18 devscripts
+
+      - name: Print odbcinst.ini
+        run: cat /etc/odbcinst.ini
 
       - name: Test
-        run: docker compose --file docker-compose-ci.yml run test_linux
+        run: cargo test
+
+
 
   dependabot:
-    needs: [linux,win64,osx,win32]
+    needs: [linux, win64, osx, win32]
     permissions:
       pull-requests: write
       contents: write
