@@ -1,13 +1,13 @@
-use anyhow::{anyhow, bail, Error};
+use anyhow::{Error, anyhow, bail};
 use clap::{ArgAction, Args, Parser};
 use log::info;
 use odbc_api::{
-    buffers::TextRowSet, escape_attribute_value, handles::OutputStringBuffer, Connection,
-    ConnectionOptions, Cursor, DriverCompleteOption, Environment, IntoParameter,
+    Connection, ConnectionOptions, Cursor, DriverCompleteOption, Environment, IntoParameter,
+    buffers::TextRowSet, escape_attribute_value, handles::OutputStringBuffer,
 };
 use std::{
-    fs::{read_to_string, File},
-    io::{stdin, stdout, Read, Write},
+    fs::{File, read_to_string},
+    io::{Read, Write, stdin, stdout},
     path::PathBuf,
 };
 
@@ -396,7 +396,9 @@ fn query(environment: &Environment, opt: &QueryOpt) -> Result<(), Error> {
             )?;
         }
         None => {
-            eprintln!("Query came back empty (not even a schema has been returned). No output has been created.");
+            eprintln!(
+                "Query came back empty (not even a schema has been returned). No output has been created."
+            );
         }
     };
     Ok(())

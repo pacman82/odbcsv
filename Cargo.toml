@@ -2,7 +2,7 @@
 name = "odbcsv"
 version = "1.0.13"
 authors = ["Markus Klein"]
-edition = "2021"
+edition = "2024"
 license = "MIT"
 repository = "https://github.com/pacman82/odbcsv/tree/main"
 documentation = "https://docs.rs/odbcsv/"
