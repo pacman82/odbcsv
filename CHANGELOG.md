@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.14](https://github.com/pacman82/odbcsv/compare/v1.0.13...v1.0.14) - 2025-02-22
+
+### Other
+
+- Merge branch 'redo-ci' into main
+- formatting
+- Update to edition 2024
+- Change driver name in connection string for maria DB
+- Use runner directly without indirection over container
+
 ## [1.0.13](https://github.com/pacman82/odbcsv/compare/v1.0.12...v1.0.13) - 2025-02-17
 
 ### Other
