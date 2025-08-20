@@ -38,5 +38,5 @@ clap = { version = "4.5.45", features = ["derive", "env"] }
 
 [dev-dependencies]
 assert_cmd = "2.0.17"
-tempfile = "3.20.0"
+tempfile = "3.21.0"
 
