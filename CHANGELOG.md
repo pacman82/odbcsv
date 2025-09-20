@@ -1,5 +1,65 @@
 # Changelog
 
+## [1.1.0](https://github.com/pacman82/odbcsv/compare/v1.0.13...v1.1.0) - 2025-09-20
+
+### Added
+
+- Allow for custom delimiters in output
+
+### Other
+
+- Update dependencies
+- *(deps)* bump tempfile from 3.21.0 to 3.22.0
+- *(deps)* bump odbc-api from 17.0.0 to 19.0.0
+- *(deps)* bump log from 0.4.27 to 0.4.28
+- *(deps)* bump clap from 4.5.46 to 4.5.47
+- *(deps)* bump clap from 4.5.45 to 4.5.46
+- *(deps)* bump tempfile from 3.20.0 to 3.21.0
+- *(deps)* bump odbc-api from 15.0.0 to 17.0.0
+- *(deps)* bump odbc-api from 14.3.0 to 15.0.0
+- *(deps)* bump clap from 4.5.44 to 4.5.45
+- *(deps)* bump actions/checkout from 4 to 5
+- *(deps)* bump anyhow from 1.0.98 to 1.0.99
+- *(deps)* bump clap from 4.5.43 to 4.5.44
+- *(deps)* bump odbc-api from 14.2.1 to 14.3.0
+- *(deps)* bump clap from 4.5.42 to 4.5.43
+- *(deps)* bump odbc-api from 14.2.0 to 14.2.1
+- *(deps)* bump clap from 4.5.41 to 4.5.42
+- *(deps)* bump odbc-api from 14.1.0 to 14.2.0
+- *(deps)* bump odbc-api from 14.0.2 to 14.1.0
+- *(deps)* bump clap from 4.5.40 to 4.5.41
+- *(deps)* bump odbc-api from 14.0.0 to 14.0.2
+- *(deps)* bump odbc-api from 13.1.0 to 14.0.0
+- *(deps)* bump odbc-api from 13.0.1 to 13.1.0
+- *(deps)* bump clap from 4.5.39 to 4.5.40
+- *(deps)* bump clap from 4.5.38 to 4.5.39
+- *(deps)* bump odbc-api from 13.0.0 to 13.0.1
+- *(deps)* bump odbc-api from 12.2.0 to 13.0.0
+- *(deps)* bump tempfile from 3.19.1 to 3.20.0
+- *(deps)* bump clap from 4.5.37 to 4.5.38
+- *(deps)* bump odbc-api from 12.0.2 to 12.2.0
+- *(deps)* bump odbc-api from 12.0.1 to 12.0.2
+- *(deps)* bump clap from 4.5.36 to 4.5.37
+- *(deps)* bump assert_cmd from 2.0.16 to 2.0.17
+- *(deps)* bump anyhow from 1.0.97 to 1.0.98
+- *(deps)* bump clap from 4.5.35 to 4.5.36
+- *(deps)* bump odbc-api from 12.0.0 to 12.0.1
+- *(deps)* bump odbc-api from 11.1.1 to 12.0.0
+- *(deps)* bump clap from 4.5.34 to 4.5.35
+- *(deps)* bump clap from 4.5.32 to 4.5.34
+- *(deps)* bump log from 0.4.26 to 0.4.27
+- *(deps)* bump tempfile from 3.19.0 to 3.19.1
+- *(deps)* bump tempfile from 3.18.0 to 3.19.0
+- *(deps)* bump clap from 4.5.31 to 4.5.32
+- *(deps)* bump tempfile from 3.17.1 to 3.18.0
+- *(deps)* bump clap from 4.5.30 to 4.5.31
+- *(deps)* bump anyhow from 1.0.96 to 1.0.97
+- Merge branch 'redo-ci' into main
+- formatting
+- Update to edition 2024
+- Change driver name in connection string for maria DB
+- Use runner directly without indirection over container
+
 ## [1.0.13](https://github.com/pacman82/odbcsv/compare/v1.0.12...v1.0.13) - 2025-02-17
 
 ### Other
