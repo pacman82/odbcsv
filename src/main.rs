@@ -107,6 +107,8 @@ struct QueryOpt {
     /// csv is going to be printed to standard out.
     #[arg(long, short = 'o')]
     output: Option<PathBuf>,
+    #[arg(long, short = 'd', default_value = ",", value_parser = parse_delimiter)]
+    delimiter: u8,
     /// Query executed against the ODBC data source. Question marks (`?`) can be used as
     /// placeholders for positional parameters.
     query: String,
@@ -133,6 +135,10 @@ struct FetchOpt {
     output: Option<PathBuf>,
     /// Query executed against the ODBC data source. Within the SQL text Question marks (`?`) can be
     /// used as placeholders for positional parameters.
+    #[arg(long, short = 'd', default_value = ",", value_parser = parse_delimiter)]
+    delimiter: u8,
+    /// Query executed against the ODBC data source. Question marks (`?`) can be used as
+    /// placeholders for positional parameters.
     #[arg(long, short = 'q', conflicts_with = "sql_file")]
     query: Option<String>,
     /// Read the SQL query from a file, rather than a literal passed at the command line. Argument
@@ -268,6 +274,17 @@ fn main() -> Result<(), Error> {
     Ok(())
 }
 
+fn parse_delimiter(s: &str) -> Result<u8, Error> {
+    if s.len() != 1 {
+        bail!("Delimiter must be a single character.");
+    }
+    let c = s.chars().next().unwrap();
+    let c: u8 = c
+        .try_into()
+        .map_err(|_| anyhow!("Delimiter must be an ASCII character."))?;
+    Ok(c)
+}
+
 /// Open a database connection using the options provided on the command line.
 fn open_connection<'e>(
     environment: &'e Environment,
@@ -327,6 +344,7 @@ fn fetch(environment: &Environment, opt: FetchOpt) -> Result<(), Error> {
     let FetchOpt {
         connect_opts,
         output,
+        delimiter,
         parameters,
         query: query_literal,
         batch_size,
@@ -346,6 +364,7 @@ fn fetch(environment: &Environment, opt: FetchOpt) -> Result<(), Error> {
         max_str_len,
         ignore_truncation: false,
         output,
+        delimiter,
         query: query_str,
         parameters,
     };
@@ -358,6 +377,7 @@ fn query(environment: &Environment, opt: &QueryOpt) -> Result<(), Error> {
     let QueryOpt {
         connect_opts,
         output,
+        delimiter,
         parameters,
         query,
         batch_size,
@@ -373,7 +393,10 @@ fn query(environment: &Environment, opt: &QueryOpt) -> Result<(), Error> {
         hold_stdout = stdout();
         Box::new(hold_stdout.lock())
     };
-    let mut writer = csv::Writer::from_writer(out);
+
+    let mut writer = csv::WriterBuilder::new()
+        .delimiter(*delimiter)
+        .from_writer(out);
 
     let connection = open_connection(environment, connect_opts)?;
 

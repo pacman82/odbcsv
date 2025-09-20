@@ -148,6 +148,45 @@ fn query_mssql() -> Result<(), Error> {
 }
 
 #[test]
+fn tab_separated() -> Result<(), Error> {
+    let table_name = "OdbcsvTabSeparated";
+    let conn = env().connect_with_connection_string(MSSQL, ConnectionOptions::default())?;
+    setup_empty_table(&conn, table_name, &["VARCHAR(255) NOT NULL", "INT"])?;
+    let insert = format!(
+        "INSERT INTO {table_name}
+        (a, b)
+        Values
+        ('Jurassic Park', 1993),
+        ('2001: A Space Odyssey', 1968),
+        ('Interstellar', NULL);"
+    );
+    conn.execute(&insert, (), None)?;
+
+    let csv = "a\tb\n\
+        Jurassic Park\t1993\n\
+        2001: A Space Odyssey\t1968\n\
+        Interstellar\t\n\
+    ";
+
+    let query = format!("SELECT a, b from {table_name}");
+    Command::cargo_bin("odbcsv")
+        .unwrap()
+        .args([
+            "-vvvv",
+            "query",
+            "--connection-string",
+            MSSQL,
+            "--delimiter",
+            "\t",
+            &query,
+        ])
+        .assert()
+        .success()
+        .stdout(csv);
+    Ok(())
+}
+
+#[test]
 fn tables() -> Result<(), Error> {
     let csv = "TABLE_CAT,TABLE_SCHEM,TABLE_NAME,TABLE_TYPE,REMARKS\n\
         master,dbo,OdbcsvTestTables,TABLE,\n\
