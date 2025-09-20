@@ -924,7 +924,7 @@ checksum = "acb069b57ebbad5234fb7197af7ee0c40daceb3946a86fa8d3f7a38393bf2770"
 
 [[package]]
 name = "odbcsv"
-version = "1.0.13"
+version = "1.1.0"
 dependencies = [
  "anyhow",
  "assert_cmd",
