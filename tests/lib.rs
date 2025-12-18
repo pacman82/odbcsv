@@ -1,5 +1,5 @@
 use anyhow::Error;
-use assert_cmd::{Command, assert::Assert, cargo::cargo_bin};
+use assert_cmd::{Command, assert::Assert, cargo::cargo_bin_cmd};
 use odbc_api::{Connection, ConnectionOptions, Environment};
 use std::{
     fs::{self, File},
@@ -62,7 +62,7 @@ fn roundtrip(csv: &'static str, table_name: &str, batch_size: u32) -> Assert {
     .unwrap();
 
     // Insert csv
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args([
             "-vvvv",
             "insert",
@@ -77,7 +77,7 @@ fn roundtrip(csv: &'static str, table_name: &str, batch_size: u32) -> Assert {
         .success();
 
     // Query csv
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args([
             "-vvvv",
             "query",
@@ -97,7 +97,7 @@ fn append_user_and_password_to_connection_string() -> Result<(), Error> {
     let connection_string =
         "Driver={ODBC Driver 18 for SQL Server};Server=localhost;TrustServerCertificate=yes;";
 
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args([
             "-vvvv",
             "query",
@@ -136,7 +136,7 @@ fn query_mssql() -> Result<(), Error> {
     ";
 
     let query = format!("SELECT a, b from {table_name}");
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args(["-vvvv", "query", "--connection-string", MSSQL, &query])
         .assert()
         .success()
@@ -166,7 +166,7 @@ fn tab_separated() -> Result<(), Error> {
     ";
 
     let query = format!("SELECT a, b from {table_name}");
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args([
             "-vvvv",
             "query",
@@ -193,7 +193,7 @@ fn tables() -> Result<(), Error> {
     let conn = env().connect_with_connection_string(MSSQL, ConnectionOptions::default())?;
     setup_empty_table(&conn, table_name, &["INTEGER"])?;
 
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args([
             "-vvvv",
             "list-tables",
@@ -230,7 +230,7 @@ fn columns() -> Result<(), Error> {
         None,
     )?;
 
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args([
             "-vvvv",
             "list-columns",
@@ -253,7 +253,7 @@ fn ignore_truncation() -> Result<(), Error> {
         1234\n\
     ";
 
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args([
             "-vvvv",
             "query",
@@ -272,7 +272,7 @@ fn ignore_truncation() -> Result<(), Error> {
 
 #[test]
 fn do_not_ignore_truncation() -> Result<(), Error> {
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args([
             "-vvvv",
             "query",
@@ -306,7 +306,7 @@ fn placeholders() -> Result<(), Error> {
         two\n\
     ";
 
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args([
             "-vvvv",
             "query",
@@ -373,7 +373,7 @@ fn list_drivers() -> Result<(), Error> {
         let mut expectations = String::new();
         expectation_file.read_to_string(&mut expectations)?;
 
-        let mut command = Command::new(cargo_bin!("odbcsv"));
+        let mut command = cargo_bin_cmd!("odbcsv");
         let odbcsv = command.args(["-vvvv", "list-drivers"]);
         odbcsv.assert().success();
         let output = String::from_utf8(odbcsv.output()?.stdout)?;
@@ -449,7 +449,7 @@ fn fetch_from_mssql() {
     ";
 
     let query = format!("SELECT a, b from {table_name}");
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args([
             "-vvvv",
             "fetch",
@@ -492,7 +492,7 @@ fn fetch_with_query_read_from_file() -> Result<(), Error> {
         Interstellar,\n\
     ";
 
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args([
             "-vvvv",
             "fetch",
@@ -511,7 +511,7 @@ fn fetch_with_query_read_from_file() -> Result<(), Error> {
 fn list_columns_with_maria_db() {
     // Maria DB driver reports very large column sizes, likely to cause an out of memory if just
     // allocated.
-    Command::new(cargo_bin!("odbcsv"))
+    cargo_bin_cmd!("odbcsv")
         .args(["-vvvv", "list-columns", "--connection-string", MARIADB])
         .assert()
         .success();
