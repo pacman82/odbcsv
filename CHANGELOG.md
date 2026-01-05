@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.1.1](https://github.com/pacman82/odbcsv/compare/v1.1.0...v1.1.1) - 2026-01-05
+
+### Other
+
+- replace cargo_bin! with cargo_bin_cmd!
+- Use cargo_bin! macro instead of deprecated function
+- *(deps)* bump log from 0.4.28 to 0.4.29
+- *(deps)* bump odbc-api from 20.0.0 to 20.1.0
+- *(deps)* bump odbc-api from 19.1.0 to 20.0.0
+- *(deps)* bump actions/checkout from 5 to 6
+- *(deps)* bump clap from 4.5.52 to 4.5.53
+- *(deps)* bump clap from 4.5.51 to 4.5.52
+- *(deps)* bump clap from 4.5.50 to 4.5.51
+- *(deps)* bump assert_cmd from 2.1.0 to 2.1.1
+- *(deps)* bump assert_cmd from 2.0.17 to 2.1.0
+- *(deps)* bump clap from 4.5.49 to 4.5.50
+- *(deps)* bump csv from 1.3.1 to 1.4.0
+- *(deps)* bump clap from 4.5.48 to 4.5.49
+- *(deps)* bump odbc-api from 19.0.2 to 19.1.0
+- *(deps)* bump odbc-api from 19.0.1 to 19.0.2
+- *(deps)* bump tempfile from 3.22.0 to 3.23.0
+
 ## [1.1.0](https://github.com/pacman82/odbcsv/compare/v1.0.13...v1.1.0) - 2025-09-20
 
 ### Added
