@@ -524,8 +524,8 @@ fn tables(environment: &Environment, table_opt: &ListTablesOpt) -> Result<(), Er
         type_,
     } = table_opt;
     let conn = open_connection(environment, connect_opts)?;
-
-    let cursor = conn.tables(
+    let stmt = conn.into_preallocated()?;
+    let cursor = stmt.into_tables_cursor(
         catalog.as_deref().unwrap_or_default(),
         schema.as_deref().unwrap_or_default(),
         name.as_deref().unwrap_or_default(),
@@ -553,7 +553,8 @@ fn columns(environment: &Environment, columns_opt: &ListColumnsOpt) -> Result<()
     } = columns_opt;
 
     let conn = open_connection(environment, connect_opts)?;
-    let cursor = conn.columns(
+    let stmt = conn.into_preallocated()?;
+    let cursor = stmt.into_columns_cursor(
         catalog.as_deref().unwrap_or_default(),
         schema.as_deref().unwrap_or_default(),
         table.as_deref().unwrap_or_default(),

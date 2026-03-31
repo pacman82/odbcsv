@@ -29,7 +29,7 @@ readme = "Readme.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-odbc-api = "23.0.1"
+odbc-api = "24.0.0"
 csv = "1.4.0"
 anyhow = "1.0.102"
 stderrlog = "0.6.0"
@@ -39,4 +39,3 @@ clap = { version = "4.6.0", features = ["derive", "env"] }
 [dev-dependencies]
 assert_cmd = "2.2.0"
 tempfile = "3.27.0"
-

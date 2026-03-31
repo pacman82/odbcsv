@@ -1,5 +1,5 @@
 use anyhow::Error;
-use assert_cmd::{Command, assert::Assert, cargo::cargo_bin_cmd};
+use assert_cmd::{assert::Assert, cargo::cargo_bin_cmd};
 use odbc_api::{Connection, ConnectionOptions, Environment};
 use std::{
     fs::{self, File},
