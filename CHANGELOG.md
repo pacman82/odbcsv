@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.1.2](https://github.com/pacman82/odbcsv/compare/v1.1.1...v1.1.2) - 2026-03-31
+
+### Other
+
+- Remove dev image from docker-compose.yml
+- Update to odbc-api 24
+- *(deps)* bump odbc-api from 22.0.0 to 23.0.1
+- *(deps)* bump odbc-api from 21.1.0 to 22.0.0
+- *(deps)* bump odbc-api from 21.0.0 to 21.1.0
+- *(deps)* bump clap from 4.5.60 to 4.6.0
+- *(deps)* bump assert_cmd from 2.1.2 to 2.2.0
+- *(deps)* bump tempfile from 3.26.0 to 3.27.0
+- *(deps)* bump odbc-api from 20.2.0 to 21.0.0
+- *(deps)* bump odbc-api from 20.1.3 to 20.2.0
+- *(deps)* bump tempfile from 3.25.0 to 3.26.0
+- *(deps)* bump anyhow from 1.0.101 to 1.0.102
+- *(deps)* bump clap from 4.5.59 to 4.5.60
+- *(deps)* bump odbc-api from 20.1.2 to 20.1.3
+- *(deps)* bump clap from 4.5.58 to 4.5.59
+- *(deps)* bump odbc-api from 20.1.1 to 20.1.2
+- *(deps)* bump clap from 4.5.57 to 4.5.58
+- *(deps)* bump tempfile from 3.24.0 to 3.25.0
+- *(deps)* bump anyhow from 1.0.100 to 1.0.101
+- *(deps)* bump clap from 4.5.56 to 4.5.57
+- *(deps)* bump clap from 4.5.55 to 4.5.56
+- *(deps)* bump clap from 4.5.54 to 4.5.55
+- *(deps)* bump odbc-api from 20.1.0 to 20.1.1
+- *(deps)* bump assert_cmd from 2.1.1 to 2.1.2
+
 ## [1.1.1](https://github.com/pacman82/odbcsv/compare/v1.1.0...v1.1.1) - 2026-01-05
 
 ### Other
