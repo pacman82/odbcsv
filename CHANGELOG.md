@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.2](https://github.com/pacman82/odbcsv/compare/v1.1.1...v1.1.2) - 2026-01-05
+
+### ⚙️ Miscellaneous Tasks
+
+- Updated dependencies
+
 ## [1.1.1](https://github.com/pacman82/odbcsv/compare/v1.1.0...v1.1.1) - 2026-01-05
 
 ### Other
