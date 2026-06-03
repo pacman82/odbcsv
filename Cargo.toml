@@ -28,7 +28,7 @@ odbc-api = "28.0.0"
 csv = "1.4.0"
 anyhow = "1.0.102"
 stderrlog = "0.6.0"
-log = "0.4.30"
+log = "0.4.31"
 clap = { version = "4.6.1", features = ["derive", "env"] }
 
 [dev-dependencies]
